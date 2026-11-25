@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Jogos de Videogame</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ===== CABEÇALHO ===== -->
+    <header class="topo">
+        <div class="container topo-conteudo">
+            <div>
+                <span class="marca">GAME LIBRARY</span>
+                <h1>Gerenciador de Jogos</h1>
+                <p>Organize sua biblioteca de videogames</p>
+            </div>
+            <div class="icone-controle" aria-hidden="true">🎮</div>
+        </div>
+    </header>
+
+    <main class="container principal">
+        <!-- ===== RESUMO (total, disponíveis, indisponíveis) ===== -->
+        <section class="resumo" aria-label="Resumo da biblioteca">
+            <article class="resumo-card">
+                <span>Total de jogos</span>
+                <strong id="totalJogos">0</strong>
+            </article>
+            <article class="resumo-card">
+                <span>Disponíveis</span>
+                <strong id="totalDisponiveis">0</strong>
+            </article>
+            <article class="resumo-card">
+                <span>Indisponíveis</span>
+                <strong id="totalIndisponiveis">0</strong>
+            </article>
+        </section>
+
+        <!-- ===== BOTÃO INCLUIR NOVO JOGO ===== -->
+        <section class="barra-acoes">
+            <div>
+                <h2>Minha biblioteca</h2>
+                <p>Consulte e gerencie os jogos cadastrados</p>
+            </div>
+            <button class="botao botao-principal" id="novoJogoBtn" type="button">
+                + Incluir novo jogo
+            </button>
+        </section>
+
+        <div id="mensagem" class="mensagem" role="status" aria-live="polite" hidden></div>
+
+        <!-- ===== LISTA DE JOGOS (o JavaScript preenche aqui) ===== -->
+        <section id="listaJogos" class="lista-jogos" aria-label="Jogos cadastrados">
+            <div class="estado-vazio">
+                <span class="vazio-icone">🕹️</span>
+                <h3>Nenhum jogo cadastrado</h3>
+                <p>Comece incluindo o primeiro jogo na sua biblioteca.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FORMULÁRIO (serve para incluir e para alterar) ===== -->
+    <div class="modal" id="modalJogo" hidden>
+        <div class="modal-conteudo" role="dialog" aria-modal="true" aria-labelledby="tituloModal">
+            <div class="modal-cabecalho">
+                <div>
+                    <span class="marca">BIBLIOTECA</span>
+                    <h2 id="tituloModal">Incluir novo jogo</h2>
+                </div>
+                <button class="fechar-modal" id="fecharModalBtn" type="button" aria-label="Fechar">×</button>
+            </div>
+
+            <form id="formJogo" novalidate>
+                <div id="erroFormulario" class="mensagem erro" role="alert" hidden></div>
+
+                <div class="campo">
+                    <label for="titulo">Título</label>
+                    <input id="titulo" name="titulo" type="text" maxlength="150" autocomplete="off">
+                    <small class="erro-campo" id="erroTitulo"></small>
+                </div>
+
+                <div class="campo">
+                    <label for="anoLancamento">Ano de lançamento</label>
+                    <input id="anoLancamento" name="anoLancamento" type="number" min="1950" step="1">
+                    <small class="erro-campo" id="erroAno"></small>
+                </div>
+
+                <div class="campo">
+                    <label for="plataforma">Plataforma</label>
+                    <input id="plataforma" name="plataforma" type="text" maxlength="100" autocomplete="off">
+                    <small class="erro-campo" id="erroPlataforma"></small>
+                </div>
+
+                <fieldset class="campo campo-disponibilidade">
+                    <legend>Disponível</legend>
+                    <label class="opcao-radio">
+                        <input type="radio" name="disponivel" value="true">
+                        Sim
+                    </label>
+                    <label class="opcao-radio">
+                        <input type="radio" name="disponivel" value="false">
+                        Não
+                    </label>
+                    <small class="erro-campo" id="erroDisponivel"></small>
+                </fieldset>
+
+                <div class="campo">
+                    <label for="observacoes">Observações <span>(opcional)</span></label>
+                    <textarea id="observacoes" name="observacoes" rows="3" maxlength="1000"></textarea>
+                    <small class="contador" id="contadorObservacoes">0/1000</small>
+                </div>
+
+                <div class="acoes-formulario">
+                    <button class="botao botao-secundario" id="cancelarBtn" type="button">
+                        Cancelar
+                    </button>
+                    <button class="botao botao-principal" id="salvarBtn" type="submit">
+                        Salvar jogo
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===== RODAPÉ (nome, turma e declaração de uso de IA) ===== -->
+    <footer class="rodape">
+        <p>Murilo Silva Dantas · TADS · Turma 3B Noturno · 2026</p>
+        <p>Usou IA: SIM — ChatGPT e Claude: estrutura inicial do projeto, ajuste de titulos</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
