@@ -20,7 +20,7 @@ O sistema permite cadastrar, consultar, alterar e excluir jogos de videogame. Ta
 
 1. Instale o JDK 21 ou superior.
 2. Instale o Maven.
-3. Abra a pasta principal do projeto no VS Code ou na IDE de sua preferência.
+3. Abra a pasta principal do projeto na IDE.
 4. Localize a classe `GerenciadorJogosApplication`.
 5. Execute o método `main` da classe.
 6. Acesse pelo navegador: http://localhost:8080.
@@ -34,6 +34,19 @@ mvn spring-boot:run
 Na primeira execução, o Maven poderá baixar as dependências necessárias. Por isso, é importante ter conexão com a internet.
 
 O Spring Boot cria o banco H2 e a tabela de jogos automaticamente. A listagem começa vazia, conforme o roteiro de validação do professor. Após os cadastros, os dados ficam armazenados em um arquivo local dentro da pasta `data`.
+
+## Endereços para acessar o sistema
+
+Depois de iniciar o projeto, os seguintes endereços ficam disponíveis:
+
+| Endereço | Para que serve |
+|---|---|
+| `http://localhost:8080` | Abre a tela principal do Gerenciador de Jogos. |
+| `http://localhost:8080/api/jogos` | Exibe a lista de jogos cadastrados em formato JSON. |
+| `http://localhost:8080/h2-console` | Abre o console do banco de dados H2. |
+| `http://localhost:8080/prompt` | Exibe o conteúdo do arquivo PROMPT.md. |
+
+**Observação:** o endereço principal apresenta a interface do sistema. As operações de cadastro, alteração e exclusão são realizadas pela própria tela, que se comunica com o backend através da Fetch API.
 
 ## Banco de dados H2
 
